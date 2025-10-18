@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    /* CSS styles */
+    .job-details {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .job-header h1 {
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .job-header p {
+        margin-bottom: 10px;
+    }
+
+    .job-description {
+        margin-top: 20px;
+    }
+
+    .job-description p {
+        line-height: 1.6;
+    }
+
+    .apply-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #28a745;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .apply-button:hover {
+        background-color: #218838;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="job-details">
+    <div class="job-header">
+        <h1>{{ job.title }}</h1>
+        <p class="company"><strong>Company:</strong> {{ job.company }}</p>
+    </div>
+    <div class="job-description">
+        <p class="description"><strong>Description:</strong> {{ job.description }}</p>
+    </div>
+    <a href="#" class="apply-button">Apply Now</a>
+    <a href="/" class="back-link">Back to search</a>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .search-results {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .job-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .job-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+    }
+
+    .job-item h2 {
+        margin-top: 0;
+    }
+
+    .job-item .company {
+        color: #666;
+    }
+
+    .job-item .description {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="search-results">
+    <h1>Search Results for "{{ keyword }}"</h1>
+    <p>{{ count }} job(s) found.</p>
+    {% if results %}
+        <ul class="job-list">
+        {% for result in results %}
+            <li class="job-item">
+                <h2><a href="{{ url_for('job_detail', file_path=result.file_path) }}">{{ result.title }}</a></h2>
+                <p class="company"><strong>Company:</strong> {{ result.company }}</p>
+                <p class="description">{{ result.description|truncate(100, True, '...') }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No jobs found for the keyword "{{ keyword }}".</p>
+    {% endif %}
+    <a href="/" class="back-link">Back to search</a>
+</div>
+{% endblock %}
